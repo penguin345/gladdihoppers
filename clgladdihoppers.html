@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-
-
 <!-- Ultimate Game Stash file--> 
 <!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
-
-
 <html>
 <head>
-  <base href="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/gladihoppper/">
+    <base href="https://cdn.jsdelivr.net/gh/bubbls/UGS-Assets@main/gladihoppper/">
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Gladihoppers</title>
-	      <script>
+	
+	<!-- CSS to force a blank, black screen over everything -->
+	<style>
+		#loading-screen {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			background-color: #000000; /* Change to #ffffff if you want a white blank screen */
+			z-index: 99999;
+			display: block;
+		}
+	</style>
+
+	<script>
       window.fileMergerConfig = {
         files: [
           { name: 'Gladihoppers.data.unityweb', parts: 2 },
@@ -29,14 +40,11 @@
 		debug: false,
 		maxRatio: 16 / 9,
 		minRatio: 9 / 16,
-
-		title: 'MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM',
+		title: 'Gladihoppers',
 		thumbnail: 'no',
 		numScreenshots:  5 ,
-
 		unityVersion: '2019.3.13f1',
 		unityWebglBuildUrl: 'Build/Gladihoppers.json',
-
 		fileSize:  23 ,
 		cachedDecompressedFileSizes: {
 			'Gladihoppers.data.unityweb':  17409938 ,
@@ -47,6 +55,19 @@
 	</script>
 </head>
 <body>
+	<!-- The blank loading screen element -->
+	<div id="loading-screen"></div>
+
 	<script src="patch/js/poki-master-loader.js"></script>
+
+	<!-- Script to hide the blank screen once everything has fully loaded -->
+	<script>
+		window.addEventListener('load', function() {
+			var loader = document.getElementById('loading-screen');
+			if (loader) {
+				loader.style.display = 'none';
+			}
+		});
+	</script>
 </body>
 </html>
